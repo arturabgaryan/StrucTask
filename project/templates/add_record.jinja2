@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Struc {{data.title}}</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+
+</head>
+<body>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/add">Add structure</a></li>
+</ul>
+<h1></h1>
+<div class="container">
+<div class="content">
+<h1>NEW RECORD</h1>
+<form method='post' id='editForm' action="/rec_add/{{id}}">
+<input type="hidden" id="custId" name="custId" value="{{id}}">
+ {% for key in data.properties %}
+  <div id = "div {{key}}">
+  <label id="label {{key}}" for="fname">{{ key }}</label><button type="button" class = "remove" id = "{{key}}">x</button><br id='br {{ key }}'>
+  <input type="text" id="input {{key}}" name="{{key}}" ><br id = 'br_2 {{ key }}'>
+  <br id = 'br_3 {{ key }}' >
+  <br id = 'br_4 {{ key }}'>
+  </div>
+ {% endfor %}
+</form>
+<button id = "confirm" form = "editForm" class="button-55">Submit</button>
+
+</div>
+</div>
+
+</body>
+<script type="text/javascript" src="/static/react.js"></script>
+</html>

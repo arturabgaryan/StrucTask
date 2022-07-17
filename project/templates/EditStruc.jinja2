@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Struc {{data.title}}</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+
+</head>
+<body>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/add">Add structure</a></li>
+</ul>
+<h1></h1>
+<div class="container">
+<div class="content">
+<form method='post' id='editForm' action="/str_edit">
+<input type="hidden" id="custId" name="custId" value="{{id}}">
+ {% for key in data.properties %}
+  <div id = "div {{key}}">
+  <label id="label {{key}}" for="fname">{{ key }}</label><button type="button" class = "remove" id = "{{key}}">x</button><br id='br {{ key }}'>
+  <input type="text" id="input {{key}}" name="{{key}}" value = "{{key}}"><br id = 'br_2 {{ key }}'>
+  <select name='type {{key}}' id="select {{key}}" onChange={chName(this.id)} >
+  {% if data.properties[key]['type'] == "string" %}
+    <option selected='selected'>string</option>
+    <option>number</option>
+    <option>array</option>
+  {% elif data.properties[key]['type'] == "number" %}
+    <option >string</option>
+    <option selected='selected' >number</option>
+    <option>array</option>
+  {% elif data.properties[key]['type'] == "array" %}
+    <option >string</option>
+    <option >number</option>
+    <option selected='selected' >array</option>
+  {% endif %}
+  </select><br id = 'br_3 {{ key }}'>
+  {% for info in data.properties[key] %}
+  {% if info != 'type' and info != 'description' and data.properties[key]['type'] != "string" %}
+
+  <label id = "descrlabel {{key}}">{{info}}:</label><br id = 'br_4 {{ key }}'>
+  <input type="text" id="descrinput {{key}}" name="descrinput {{key}}" value="{{data.properties[key][info]}}" ><br id = 'br_5 {{ key }}'>
+
+  {% elif info != 'type' and info != 'description' and data.properties[key]['type'] == "string" %}
+
+  <label id = "descrlabel {{key}}" >Default:</label><br id = 'br_4 {{ key }}'>
+  <input type="text" id="descrinput {{key}}" name="descrinput {{key}}" ><br id = 'br_5 {{ key }}'>
+
+  {% endif %}
+
+  {% endfor %}
+  <label id = "description label {{key}}" >Description:</label><br id = 'br_6 {{ key }}'>
+  <input type="text" id="description {{key}}" name="description {{key}}" value="{{data.properties[key]['description']}}" ><br id = 'br_7 {{ key }}'>
+  <br id = 'br_8 {{ key }}' >
+  <br id = 'br_9 {{ key }}'>
+  </div>
+
+  {% endfor %}
+
+
+</form>
+<button id = "add" class="button-55" >Add New</button>
+<button id = "confirm" form = "editForm" class="button-55">Submit</button>
+
+</div>
+</div>
+
+</body>
+<script type="text/javascript" src="/static/react.js"></script>
+</html>

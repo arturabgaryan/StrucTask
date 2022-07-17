@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Struc {{data.title}}</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/add">Add structure</a></li>
+</ul>
+<div class="container">
+<h1>STRUCTURE {{data.title}}</h1>
+{% for key in data.properties %}
+<h2>{{key}}</h2>
+<table class="tables">
+{% for info in data.properties[key] %}
+<tr><td class="highlighted">{{ info }}</td> <td>{{ data.properties[key][info] }}</tr>
+{% endfor %}
+
+</table>
+{% endfor %}
+</div>
+{% block scripts %}
+<script type="text/javascript">
+	{% include "/static/react.js" %}
+</script>
+{% endblock %}
+</body>
+</html>

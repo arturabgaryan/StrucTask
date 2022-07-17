@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home page</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+    <script type="text/javascript" src="/static/react.js"></script>
+</head>
+<body>
+
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/add">Add structure</a></li>
+</ul>
+
+<div class="container">
+    <h1>RECORDS OF STRUCTURE {{ name }}</h1>
+<table class='tables'>
+    <tr>
+        <th>NAME</th>
+        <th>OPTIONS</th>
+    </tr>
+    {% for r in data %}
+    <tr><td><a href="/recInf/{{ r[1] }}">{{ r[1] }}</a></td><td><a href="/rec/{{ r[1] }}">edit </a><a style="margin-left:15px;" href="/deleterec/{{ r[1] }}">delete</a></td></tr>
+    {% endfor %}
+</table>
+<a class="b" href="/addRec/{{strId}}">Add Record</a>
+</div>
+
+</body>
+</html>

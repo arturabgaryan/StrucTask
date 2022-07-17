@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home page</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+    <script type="text/javascript" src="/static/react.js"></script>
+</head>
+<body>
+
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/add">Add structure</a></li>
+</ul>
+
+<div class="container">
+    <h1>STRUCTURES</h1>
+<table class='tables'>
+    <tr>
+        <th>NAME</th>
+        <th>OPTIONS</th>
+    </tr>
+    {% for st in struc %}
+    <tr><td><a href="/records/{{ st[1] }}">{{ st[0].title }}</a></td><td><a href="/see/{{ st[1] }}">info</a><a style="margin-left:15px;" href="/struc/{{ st[1] }}">edit</a><a style="margin-left:15px;" href="/delete/{{ st[1] }}">delete</a></td></tr>
+    {% endfor %}
+</table>
+</div>
+</body>
+</html>

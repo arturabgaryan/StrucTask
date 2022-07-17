@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Struc {{data.title}}</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/add">Add structure</a></li>
+</ul>
+<div class="container">
+<h1>RECORD {{id}}</h1>
+{% for key in data %}
+<table class="tables">
+<tr><td class="highlighted">{{ key }}</td> <td>{{ data[key] }}</tr>
+</table>
+{% endfor %}
+</div>
+{% block scripts %}
+<script type="text/javascript">
+	{% include "/static/react.js" %}
+</script>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>New Structure</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/add">Add structure</a></li>
+</ul>
+<h1></h1>
+<div class="container">
+<div class="content">
+<form method='post' id='editForm' action="/add_str">
+<div id='id'>
+<label id="title" for="title"><b>Set Title</b></label><br id='br'>
+<input type="text" id='title' name="title"><br><br>
+<label id="label" for="fname">New feature</label><br id='br'>
+  <input type="text" id="input" name="name" ><br id = 'br_2'>
+  <select name='type' id="select" onChange={chName(this.id)} >
+    <option selected='selected'>string</option>
+    <option>number</option>
+    <option>array</option>
+  </select><br id = 'br_3 '>
+  <label id = "descrlabel">Default:</label><br id = 'br_4'>
+  <input type="text" id="descrinput" name="descrinput" ><br id = 'br_5'>
+  <label id = "description label" >Description:</label><br id = 'br_6'>
+  <input type="text" id="description" name="description" ><br id = 'br_7'>
+  <br id = 'br_8' >
+  <br id = 'br_9'>
+</div>
+</form>
+<button id = "add" class="button-55">Add New</button>
+<button id = "confirm" form = "editForm" class="button-55">Submit</button>
+</div>
+</div>
+
+{% block scripts %}
+<script type="text/javascript">
+	{% include "/static/react.js" %}
+</script>
+{% endblock %}
+</body>
+</html>
